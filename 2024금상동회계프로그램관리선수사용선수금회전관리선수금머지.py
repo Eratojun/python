@@ -27,7 +27,7 @@ from openpyxl.styles import PatternFill #엑셀셀을 빨간색으로 표시
 
 
 # 엑셀 파일 불러오기
-file_path = r'C:\dev\myproj01\통합조회_20240930금상동.xlsx'  # 엑셀 파일 경로를 지정하세요
+file_path = r'C:\dev\myproj01\통합조회_20241112금상동.xlsx'  # 엑셀 파일 경로를 지정하세요
 df = pd.read_excel(file_path)
 
 

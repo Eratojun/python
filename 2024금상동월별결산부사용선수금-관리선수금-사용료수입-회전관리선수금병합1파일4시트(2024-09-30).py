@@ -71,15 +71,15 @@ for excel_file in excel_files:
     
     
     df =pd.read_excel(excel_file,sheet_name="사용선수금",skiprows=3,usecols="a:g")
-    df.columns = ['날짜', '성명', '봉안함번호', '적요1', '차변', '대변', '잔액']
+    df.columns = ['날짜', '성명', '봉안함', '적요1', '차변', '대변', '잔액']
     #df['날짜'] = pd.to_datetime(df['날짜']).dt.strftime('%Y-%m-%d')
     
     df2 =pd.read_excel(excel_file,sheet_name="관리선수금",skiprows=3,usecols="a:g")
-    df2.columns = ['날짜', '성명', '봉안함번호', '적요1', '차변', '대변', '잔액']
+    df2.columns = ['날짜', '성명', '봉안함', '적요1', '차변', '대변', '잔액']
     #f2['날짜'] = pd.to_datetime(df2['날짜']).dt.strftime('%Y-%m-%d')
     
     df3 =pd.read_excel(excel_file,sheet_name="사용료수입",skiprows=3,usecols="a:g")
-    df3.columns = ['날짜', '성명', '봉안함번호', '적요1', '차변', '대변', '잔액']
+    df3.columns = ['날짜', '성명', '봉안함', '적요1', '차변', '대변', '잔액']
     #df3['날짜'] = pd.to_datetime(df3['날짜']).dt.strftime('%Y-%m-%d')
     
     try:
@@ -92,7 +92,7 @@ for excel_file in excel_files:
           print(f"'{excel_file}' 파일에서 '회전관선' 시트를 읽습니다.")
           # 시트를 읽어 데이터프레임으로 저장
           df4 = pd.read_excel(excel_file, sheet_name="회전관선", skiprows=3, usecols="A:G")
-          df4.columns = ['날짜', '성명', '봉안함번호', '적요1', '차변', '대변', '잔액']
+          df4.columns = ['날짜', '성명', '봉안함', '적요1', '차변', '대변', '잔액']
           total_df4=total_df4._append(df4,ignore_index=True)
           print(df4.head())  # 데이터프레임 출력
         else:
@@ -112,7 +112,7 @@ for excel_file in excel_files:
     
     
     df4 = pd.read_excel(excel_file, sheet_name="회전관선-최준철세무사", skiprows=3, usecols="A:G")
-    df4.columns = ['날짜', '성명', '봉안함번호', '적요1', '차변', '대변', '잔액']
+    df4.columns = ['날짜', '성명', '봉안함', '적요1', '차변', '대변', '잔액']
 
     
     #df4 =pd.read_excel(excel_file,sheet_name="회전관선",skiprows=3,usecols="a:g")
@@ -188,10 +188,10 @@ total_df5['적       요']=total_df5['적       요'].fillna(method='ffill') # �
 
 
 
-total_df=total_df.sort_values(["봉안함번호"]) # 일자로 정렬
-total_df2=total_df2.sort_values(["봉안함번호"]) # 일자로 정렬
-total_df3=total_df3.sort_values(["봉안함번호"]) # 일자로 정렬
-total_df4=total_df4.sort_values(["봉안함번호"]) # 일자로 정렬
+total_df=total_df.sort_values(["봉안함"]) # 일자로 정렬
+total_df2=total_df2.sort_values(["봉안함"]) # 일자로 정렬
+total_df3=total_df3.sort_values(["봉안함"]) # 일자로 정렬
+total_df4=total_df4.sort_values(["봉안함"]) # 일자로 정렬
 
 
 
@@ -199,10 +199,10 @@ total_df4=total_df4.sort_values(["봉안함번호"]) # 일자로 정렬
 
 
 
-total_df= total_df.dropna(subset=["봉안함번호"]) #아래 봉안함번로 없는 행을 없애기위해 봉안함번호없는 부분을 삭제함
-total_df2= total_df2.dropna(subset=["봉안함번호"]) #아래 봉안함번로 없는 행을 없애기위해 봉안함번호없는 부분을 삭제함
-total_df3= total_df3.dropna(subset=["봉안함번호"]) #아래 봉안함번로 없는 행을 없애기위해 봉안함번호없는 부분을 삭제함
-total_df4= total_df4.dropna(subset=["봉안함번호"]) #아래 봉안함번로 없는 행을 없애기위해 봉안함번호없는 부분을 삭제함
+total_df= total_df.dropna(subset=["봉안함"]) #아래 봉안함번로 없는 행을 없애기위해 봉안함없는 부분을 삭제함
+total_df2= total_df2.dropna(subset=["봉안함"]) #아래 봉안함번로 없는 행을 없애기위해 봉안함없는 부분을 삭제함
+total_df3= total_df3.dropna(subset=["봉안함"]) #아래 봉안함번로 없는 행을 없애기위해 봉안함없는 부분을 삭제함
+total_df4= total_df4.dropna(subset=["봉안함"]) #아래 봉안함번로 없는 행을 없애기위해 봉안함없는 부분을 삭제함
 
 
 
@@ -227,10 +227,10 @@ total_df5.to_excel("C:\dev\myproj01\금상동\결과폴더\월별결산부2024.x
 # 데이터프레임과 시트 이름 리스트
 dfs = [total_df, total_df2,total_df3,total_df4,total_df5]
 
-total_df.columns = ['날짜','성명','봉안함번호','적요1','차변','대변','잔액']
-total_df2.columns = ['날짜','성명','봉안함번호','적요1','차변','대변','잔액']
-total_df3.columns = ['날짜','성명','봉안함번호','적요1','차변','대변','잔액']
-total_df4.columns = ['날짜', '성명','봉안함번호','적요1','차변','대변','잔액']
+total_df.columns = ['날짜','성명','봉안함','적요1','차변','대변','잔액']
+total_df2.columns = ['날짜','성명','봉안함','적요1','차변','대변','잔액']
+total_df3.columns = ['날짜','성명','봉안함','적요1','차변','대변','잔액']
+total_df4.columns = ['날짜', '성명','봉안함','적요1','차변','대변','잔액']
     
 
 
@@ -249,16 +249,16 @@ total_df4['날짜'] = total_df4['날짜'].dt.strftime('%Y-%m-%d')
 
 
 total_df['날짜']=total_df['날짜'].fillna(method='ffill') # 최근일 월일없는행은 전일자로 처리
-total_df=total_df.sort_values(["봉안함번호"]) # 일자와 환율을 일자와 환율로 정렬
+total_df=total_df.sort_values(["봉안함"]) # 일자와 환율을 일자와 환율로 정렬
     
 total_df2['날짜']=total_df2['날짜'].fillna(method='ffill') # 최근일 월일없는행은 전일자로 처리
-total_df2=total_df2.sort_values(["봉안함번호"]) # 일자와 환율을 일자와 환율로 정렬
+total_df2=total_df2.sort_values(["봉안함"]) # 일자와 환율을 일자와 환율로 정렬
 
 total_df3['날짜']=total_df3['날짜'].fillna(method='ffill') # 최근일 월일없는행은 전일자로 처리
-total_df3=total_df3.sort_values(["봉안함번호"]) # 일자와 환율을 일자와 환율로 정렬
+total_df3=total_df3.sort_values(["봉안함"]) # 일자와 환율을 일자와 환율로 정렬
 
 total_df4['날짜']=total_df4['날짜'].fillna(method='ffill') # 최근일 월일없는행은 전일자로 처리
-total_df4=total_df4.sort_values(["봉안함번호"]) # 일자와 환율을 일자와 환율로 정렬
+total_df4=total_df4.sort_values(["봉안함"]) # 일자와 환율을 일자와 환율로 정렬
 
 
 
@@ -319,3 +319,55 @@ wb.save(save_path)
 
 total_df.info()
 			
+import pandas as pd
+from openpyxl import load_workbook
+
+# 파일 경로 설정
+file_path = r'C:\dev\myproj01\금상동\결과폴더\월별결산부사용선수금-관리선수금-사용료수입-회전관리선수금(열조정2024).xlsx'  # 여기에 엑셀 파일 경로 입력
+
+# 엑셀 파일 불러오기 (openpyxl 사용)
+wb = load_workbook(file_path)
+sheet_names = ['사용선수금', '관리선수금', '사용료수입', '회전관리선수금']  # 작업할 시트 이름들
+
+# 각 시트에 대해 작업 수행
+for sheet_name in sheet_names:
+    # pandas로 시트를 읽어오기
+    df = pd.read_excel(file_path, sheet_name=sheet_name)
+    
+    # "계정과목" 열을 추가하고 시트 이름으로 채우기
+    df['계정과목'] = sheet_name
+    
+    # pandas로 수정된 데이터를 다시 엑셀 파일로 저장
+    with pd.ExcelWriter(file_path, engine='openpyxl', mode='a', if_sheet_exists='replace') as writer:
+        df.to_excel(writer, sheet_name=sheet_name, index=False)
+
+print("모든 시트에 '계정과목' 열 추가 완료.")
+
+import pandas as pd
+
+# 파일 경로 설정
+a_file = r'C:\dev\myproj01\금상동\결과폴더\금상동_2024.xlsx'  # a파일 경로
+b_file = r'C:\dev\myproj01\금상동\결과폴더\월별결산부사용선수금-관리선수금-사용료수입-회전관리선수금(열조정2024).xlsx'  # b파일 경로
+
+# 1. a 파일 불러와서 데이터프레임 a 생성
+df_a = pd.read_excel(a_file)
+df_b = pd.read_excel(b_file)
+# 2. b 파일의 첫 번째 시트부터 네 번째 시트까지 데이터프레임 생성
+#b_sheets = [pd.read_excel(b_file, sheet_name=i) for i in range(4)]
+
+# 3. '봉안함' 열을 기준으로 차변, 대변, 계정과목 열을 병합
+# 처음에는 df_a와 첫 번째 시트를 병합하고, 이후 병합 결과와 두 번째~네 번째 시트를 병합
+df_merged = df_a
+
+#for df_b in b_sheets:
+df_merged = pd.merge(df_merged, 
+                         df_b[['봉안함', '차변', '대변', '계정과목']], 
+                         on='봉안함', 
+                         how='left',
+                         suffixes=('', '_b'))
+
+# 4. 병합된 결과를 엑셀 파일로 저장
+output_file = r'C:\dev\myproj01\금상동\결과폴더\병합결과.xlsx'
+df_merged.to_excel(output_file, index=False)
+
+print(f"병합된 데이터가 {output_file}로 저장되었습니다.")
