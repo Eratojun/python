@@ -22,7 +22,8 @@ def export_multiple_dfs_to_excel(dfs, sheet_names, file_name):
 
 
 # 엑셀 파일 읽기
-file_path = 'C:\dev\myproj01\회사등록_엑셀간편저장_241115.xls'  # 여기에 원본 엑셀 파일 경로를 입력하세요.
+file_path = 'C:\dev\myproj01\회사등록_엑셀간편저장_251020.xls'  # 여기에 원본 엑셀 파일 경로를 입력하세요.
+
 df = pd.read_excel(file_path)
 
 df['회사코드2']=df['회사코드']
@@ -71,7 +72,7 @@ df = df.sort_values(by=business_number_col, ascending=True)
 
 
 # 최종 정렬된 데이터프레임을 엑셀 파일로 저장
-final_sorted_path = 'C:\dev\myproj01\회사목록20241115.xlsx'
+final_sorted_path = 'C:\dev\myproj01\회사목록20251020.xlsx'
 #df.to_excel(final_sorted_path, sheet_name='사업자번호순',index=False)
 #df2.to_excel(final_sorted_path, sheet_name='대표자명순',index=False)
 
